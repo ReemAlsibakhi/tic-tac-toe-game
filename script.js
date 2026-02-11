@@ -1,10 +1,15 @@
 const cells = document.querySelectorAll('.cell');
 const status = document.getElementById('status');
 const restartBtn = document.getElementById('restart');
+const resetScoresBtn = document.getElementById('reset-scores');
+const scoreX = document.getElementById('score-x');
+const scoreO = document.getElementById('score-o');
+const scoreDraw = document.getElementById('score-draw');
 
 let currentPlayer = 'X';
 let board = ['', '', '', '', '', '', '', '', ''];
 let gameActive = true;
+let scores = { X: 0, O: 0, draw: 0 };
 
 const winPatterns = [
     [0, 1, 2],
@@ -33,12 +38,16 @@ function handleCellClick(e) {
         status.textContent = `Player ${currentPlayer} wins!`;
         gameActive = false;
         highlightWinningCells();
+        scores[currentPlayer]++;
+        updateScoreboard();
         return;
     }
 
     if (checkDraw()) {
         status.textContent = "It's a draw!";
         gameActive = false;
+        scores.draw++;
+        updateScoreboard();
         return;
     }
 
@@ -66,6 +75,12 @@ function highlightWinningCells() {
     });
 }
 
+function updateScoreboard() {
+    scoreX.textContent = scores.X;
+    scoreO.textContent = scores.O;
+    scoreDraw.textContent = scores.draw;
+}
+
 function restartGame() {
     currentPlayer = 'X';
     board = ['', '', '', '', '', '', '', '', ''];
@@ -78,5 +93,12 @@ function restartGame() {
     });
 }
 
+function resetScores() {
+    scores = { X: 0, O: 0, draw: 0 };
+    updateScoreboard();
+    restartGame();
+}
+
 cells.forEach(cell => cell.addEventListener('click', handleCellClick));
 restartBtn.addEventListener('click', restartGame);
+resetScoresBtn.addEventListener('click', resetScores);
