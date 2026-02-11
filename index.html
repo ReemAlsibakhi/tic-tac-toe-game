@@ -7,21 +7,39 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Tic-Tac-Toe</h1>
-        <div class="status" id="status">Player X's turn</div>
-        <div class="board" id="board">
-            <div class="cell" data-index="0"></div>
-            <div class="cell" data-index="1"></div>
-            <div class="cell" data-index="2"></div>
-            <div class="cell" data-index="3"></div>
-            <div class="cell" data-index="4"></div>
-            <div class="cell" data-index="5"></div>
-            <div class="cell" data-index="6"></div>
-            <div class="cell" data-index="7"></div>
-            <div class="cell" data-index="8"></div>
+    <div class="wrapper">
+        <div class="container">
+            <h1>Tic-Tac-Toe</h1>
+            <div class="status" id="status">Player X's turn</div>
+            <div class="board" id="board">
+                <div class="cell" data-index="0"></div>
+                <div class="cell" data-index="1"></div>
+                <div class="cell" data-index="2"></div>
+                <div class="cell" data-index="3"></div>
+                <div class="cell" data-index="4"></div>
+                <div class="cell" data-index="5"></div>
+                <div class="cell" data-index="6"></div>
+                <div class="cell" data-index="7"></div>
+                <div class="cell" data-index="8"></div>
+            </div>
+            <button class="restart-btn" id="restart">Restart Game</button>
         </div>
-        <button class="restart-btn" id="restart">Restart Game</button>
+        <div class="scoreboard">
+            <h2>Scoreboard</h2>
+            <div class="score-item">
+                <span class="player-label x-label">Player X</span>
+                <span class="score" id="score-x">0</span>
+            </div>
+            <div class="score-item">
+                <span class="player-label o-label">Player O</span>
+                <span class="score" id="score-o">0</span>
+            </div>
+            <div class="score-item">
+                <span class="player-label draw-label">Draws</span>
+                <span class="score" id="score-draw">0</span>
+            </div>
+            <button class="reset-scores-btn" id="reset-scores">Reset Scores</button>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
